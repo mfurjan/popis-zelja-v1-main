@@ -1,0 +1,52 @@
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+   
+    <div class="w-full max-w-md p-8 bg-white rounded-xl shadow-lg">
+
+        
+        <div class="text-2xl mb-6 font-semibold text-center text-blue-600">Prijava korisnika</div>
+
+       
+        <form method="post" action="/users/signin" class="grid grid-cols-1 gap-4">
+           
+            <div class="flex flex-col">
+                <label for="email" class="font-medium text-gray-800">E-mail adresa</label>
+                <input type="email" name="email" maxlength="100" required
+                    class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            </div>
+
+           
+            <div class="flex flex-col">
+                <label for="password" class="font-medium text-gray-800">Zaporka</label>
+                <input type="password" name="password" required
+                    class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            </div>
+
+           
+            <input type="submit" value="Prijava"
+                class="w-full p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300" />
+        </form>
+
+       
+        <div class="mt-6 text-center">
+            {{#if error_validation}}
+                <p class="text-red-500">Dogodila se greška u provjeri podataka!</p>
+            {{/if}}
+
+            {{#if error_database}}
+                <p class="text-red-500">Dogodila se greška u radu baze podataka!</p>
+            {{/if}}
+
+            {{#if unknown_user}}
+                <p class="text-red-500">Korisnik ne postoji!</p>
+            {{/if}}
+
+            {{#if invalid_password}}
+                <p class="text-red-500">Zaporka nije točna!</p>
+            {{/if}}
+        </div>
+        
+    </div>
+
+</body>
+</html>
