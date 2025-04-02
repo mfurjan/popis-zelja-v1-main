@@ -16,19 +16,28 @@ router.post("/create", async function (req, res, next) {
         return;
     }
 
+    // Preuzimanje podataka iz body-ja zahtjeva
+    const { name, category } = req.body;
+
     let conn;
     try {
         conn = await db.getConnection();
-        const query = "INSERT INTO rooms (name) VALUES (?);";
+
+        // SQL upit za unos sobe s kategorijom
+        const query = "INSERT INTO rooms (name, category) VALUES (?, ?);";
         const stmt = await conn.prepare(query);
-        const result = await stmt.execute([req.body.name]);
+        const result = await stmt.execute([name, category]);
+
         res.render("rooms/create", { success: true });
     } catch (error) {
+        console.error(error);
         res.render("rooms/create", { error_database: true });
     } finally {
         conn.release();
     }
 });
+
+
 
 router.post("/delete", async function (req, res, next) {
  

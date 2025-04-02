@@ -10,6 +10,17 @@
         class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
     </div>
 
+    <div>
+    <label for="category" class="block text-sm font-medium text-gray-700">Odaberi kategoriju</label>
+    <select name="category" id="category" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+      <option value="Tehnologija">Tehnologija</option>
+      <option value="Putovanja">Putovanja</option>
+      <option value="Sport">Sport</option>
+      <option value="Hobi">Hobi</option>
+      <option value="Poklon">Poklon</option>
+    </select>
+  </div>
+
     <div class="flex space-x-2">
       <input type="submit" value="Dodaj"
         class="w-full p-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300" />
@@ -18,7 +29,7 @@
     </div>
   </form>
 </div>
-
+<br> 
 {{#if error_validation}}
 <p>Dogodila se greška u provjeri podataka!</p>
 {{/if}}
@@ -28,5 +39,7 @@
 {{/if}}
 
 {{#if success}}
-<p>Želja je uspješno dodana!</p>
+<p class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-lg shadow-md">
+    ✅ Želja je uspješno dodana!
+</p>
 {{/if}}
